@@ -1,6 +1,10 @@
 from django.http import HttpResponse
 from django.template import loader
 
+from plots.fb_comments_scrapper import FbCommentScrapper
+
+fb = FbCommentScrapper()
+
 ALL_PLOTS = {'scatter':
 				{
 				'location':'sentiment.png', \
@@ -48,14 +52,14 @@ def data(request):
 	return HttpResponse(html)
 
 def scatter(request):
-
+	fb.plot_sentiment()
 	context = {
 		'all_plots': ALL_PLOTS['scatter'],
 	}
 	return HttpResponse(render_html(context))
 
 def wordcloud(request):
-
+	fb.plot_wordcloud()
 	context = {
 		'all_plots': ALL_PLOTS['wordcloud'],
 	}
@@ -73,50 +77,3 @@ def render_html(context):
 		html += "<h3>You don't have any plots</h3>"
 
 	return html
-# __________________One_______________________
-# from django.http import HttpResponse
-
-# from django.shortcuts import render
-
-# Create your views here.
-
-# def index(request):
-# 	return HttpResponse("<h1> This is the plots app home page </h1>")
-
-# def scatter(request):
-# 	return HttpResponse("<h1> This is the scatter plot home page </h1>")
-
-# def wordcloud(request):
-# 	return HttpResponse("<h1> This is the worldcloud home page </h1>")
-
-#_________________Two________________
-# from django.http import HttpResponse
-# from .models import Album
-
-# def index(request):
-# 	all_plots = Plot.objects.all()
-# 	html = ''
-# 	for plot in all_plots:
-# 		url = '/plots/' + str(plot.id) + '/'
-# 		html += '<a href="' + url + '">' + plot.plot_title + '</a><br>'
-# 	return HttpResponse(html)
-
-# def detail(request, plot_id):
-# 	return HttpResponse("<h2>Details for Plot id: " + str(plot_id) + "</h2>")
-
-#_______________Three_________________
-# from django.http import HttpResponse
-# from django.template import loader
-# from .models import Album
-
-# def index(request):
-# 	all_plots = Plot.objects.all()
-# 	template = loader.get_template('music/index.html')
-# 	context: {
-# 		'all_plots': all_plots,
-# 	}
-
-# 	return HttpResponse(template.render(context, request))
-
-# def detail(request, plot_id):
-	# return HttpResponse("<h2>Details for Plot id: " + str(plot_id) + "</h2>")

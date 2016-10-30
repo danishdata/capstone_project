@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from urllib import urlopen, urlretrieve
 from wordcloud import WordCloud, STOPWORDS
 	
-class FbPhotoScrapper(object):
+class FbCommentScrapper(object):
 
 	PROJECT_ROOT=os.getcwd()
 	IMG_ROOT = PROJECT_ROOT+'/plots/static/images/'
