@@ -90,7 +90,6 @@ pyasn1-modules==0.0.8
 pycparser==2.14
 pycrypto==2.6.1
 pylev==1.3.0
-pylinkchecker==0.2
 pymongo==3.2.2
 pyparsing==2.0.3
 pytest==2.7.2
@@ -127,3 +126,4 @@ wkhtmltopdf==0.2
 wsgiref==0.1.2
 xlrd==0.9.4
 indicoio
+wordcloud
