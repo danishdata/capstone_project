@@ -50,9 +50,6 @@ def data(request):
 		html += '<p>' + value['description'] + '</p>'
 		html += '<a href=' + value['url'] + '>' + source + ' helpdoc</a><br>'
 
-	# html += '<h2>Facebook Graph API</h2>'
-	# html += '<p>This API is used to scrap comments for tourist spots. These will then be used for sentiment analysis.</p>'
-	# html += '<a href="https://developers.facebook.com/docs/graph-api">Facebook Graph API helpdoc</a><br>'
 	return HttpResponse(html)
 
 def scatter(request):
@@ -78,8 +75,12 @@ def render_html(context):
 		# html += '<img class="plotImage" alt="Image of Plot" src=' + IMG_ROOT + \
 		# 	all_plots['location'] + '"/>'
 
-		html += '<img class="plotImage" alt="Image of Plot" src="/static/images/' + \
+		# html += '<img class="plotImage" alt="Image of Plot" src="/static/images/' + \
+		# 	all_plots['location'] + '"/>'
+
+		html += '<img class="plotImage" alt="Image of Plot" src="/capstone/static/' + \
 			all_plots['location'] + '"/>'
+
 	else:
 		html += "<h3>You don't have any plots</h3>"
 
