@@ -105,7 +105,6 @@ requests==2.9.1
 requests-oauthlib==0.4.2
 rsa==3.4.2
 s3transfer==0.1.1
-scikit-learn==0.17.1
 scipy==0.15.1
 seaborn==0.6.0
 selenium==2.47.1
