@@ -83,5 +83,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = PROJECT_ROOT + '/static'
+STATIC_ROOT = PROJECT_ROOT + '/capstone/static'
 STATICFILES_DIRS = (     ('assets', PROJECT_ROOT+'/plots/static'), )

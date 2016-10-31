@@ -1,1 +1,1 @@
-web: gunicorn plots.wsgi --log-file -
+web: gunicorn capstone.wsgi --log-file -
