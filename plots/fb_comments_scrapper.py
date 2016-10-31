@@ -48,24 +48,26 @@ class FbCommentScrapper(object):
 	def read_or_retrieve(self, url, num_statuses, month, year):
 		flag_break = False
 
-		if os.path.isdir(cls.PROJECT_ROOT+'/plots/cache/'):
+		if os.path.isdir(self.PROJECT_ROOT+'/plots/cache/'):
 			pass
 		else:
-			os.mkdir(cls.PROJECT_ROOT+'/plots/cache/')
+			os.mkdir(self.PROJECT_ROOT+'/plots/cache/')
 
 		url_obj = self.get_url_obj(url, num_statuses)
 		for item in url_obj:
 			date_array = str(item['created_time']).split('-')
-			if 'message' in item and date_array[0] == year and date_array[1] == month:
-				print item['created_time']
-				fname = cls.PROJECT_ROOT + '/plots/cache/' + item['id']
-				try:
-					with open(fname +'.pickle', 'rb') as handle:
-						pickle.load(handle)
-				except:
-					with open(fname+'.pickle', 'wb') as handle:
-						pickle.dump(item, handle)
-				handle.close()
+			if date_array[0] == year and date_array[1] == month:
+				if 'message' in item:
+					fname = self.PROJECT_ROOT + '/plots/cache/' + item['id']
+					try:
+						with open(fname +'.pickle', 'rb') as handle:
+							pickle.load(handle)
+							flag_break = True
+							break
+					except:
+						with open(fname+'.pickle', 'wb') as handle:
+							pickle.dump(item, handle)
+					handle.close()
 			else:
 				flag_break = True
 				break
@@ -78,25 +80,9 @@ class FbCommentScrapper(object):
 		return req['data']
 
 	@classmethod
-	def fetch_posts_from_cache(cls):
-		CACHE_ROOT = cls.PROJECT_ROOT+'/plots/cache/'
-		fnames = os.listdir(CACHE_ROOT)
-		posts = []
-		for fname in fnames:
-			with open(CACHE_ROOT + fname, 'rb') as handle:
-				post = pickle.load(handle)
-			handle.close()
-			if 'message' in post:
-				for validation in ['k2','K2','k-2','K-2']:
-					if validation in post['message']:
-						posts.append(post)
-						break
-		return posts
-
-	@classmethod
-	def plot_wordcloud(cls):
+	def plot_wordcloud(cls, location=['k2','K2','k-2','K-2']):
 		FONT_ROOT = cls.PROJECT_ROOT+'/plots/static/fonts/'
-		word_string = cls.parse_comments()
+		word_string = cls.parse_comments(location)
 		wordcloud = WordCloud(font_path=FONT_ROOT + 'arial.ttf',
 		                          stopwords=STOPWORDS,
 		                          background_color='black',
@@ -112,9 +98,9 @@ class FbCommentScrapper(object):
 		# plt.show()
 
 	@classmethod
-	def plot_sentiment(cls):
+	def plot_sentiment(cls, location=['k2','K2','k-2','K-2']):
 		indicoio.config.api_key = '47b4880774a89fa23a5f47acdbfb832c'
-		word_string = cls.parse_comments()
+		word_string = cls.parse_comments(location)
 		scores = indicoio.sentiment(word_string)
 		mean_score = np.mean(scores)
 		state = 'Positive' if mean_score>0.5 else 'Neutral' if mean_score==0.5 else 'Negative'
@@ -135,9 +121,9 @@ class FbCommentScrapper(object):
 		# plt.show()
 
 	@classmethod
-	def parse_comments(cls):
+	def parse_comments(cls, location):
 		word_string = []
-		posts = cls.fetch_posts_from_cache()
+		posts = cls.fetch_posts_from_cache(location)
 		for post in posts:
 			word_string.append(post['message'])
 			if 'comments' in post:
@@ -147,3 +133,19 @@ class FbCommentScrapper(object):
 						word_string.append(comment['message'])
 
 		return word_string
+
+	@classmethod
+	def fetch_posts_from_cache(cls, location):
+		CACHE_ROOT = cls.PROJECT_ROOT+'/plots/cache/'
+		fnames = os.listdir(CACHE_ROOT)
+		posts = []
+		for fname in fnames:
+			with open(CACHE_ROOT + fname, 'rb') as handle:
+				post = pickle.load(handle)
+			handle.close()
+
+			for validation in location:
+				if validation in post['message']:
+					posts.append(post)
+					break
+		return posts

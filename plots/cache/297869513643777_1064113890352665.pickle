@@ -18,7 +18,7 @@ VTVRBd01EQTBNelV6TURjMk5qTTBPakUwTnpZAM09EZAzBNems2TnpnNE5qUTRNRE0zT1RFek16RXkZD
 p10
 ssVnext
 p11
-Vhttps://graph.facebook.com/v2.6/297869513643777_1064113890352665/reactions?access_token=599965930180946%7C575aa5390a4589483de7f8cf99702788&limit=1&after=TVRBd01EQTBNelV6TURjMk5qTTBPakUwTnpZAM09EZAzBNems2TnpnNE5qUTRNRE0zT1RFek16RXkZD
+Vhttps://graph.facebook.com/v2.6/297869513643777_1064113890352665/reactions?access_token=599965930180946%7C575aa5390a4589483de7f8cf99702788&summary=true&limit=1&after=TVRBd01EQTBNelV6TURjMk5qTTBPakUwTnpZAM09EZAzBNems2TnpnNE5qUTRNRE0zT1RFek16RXkZD
 p12
 ssVdata
 p13
@@ -36,31 +36,41 @@ sVname
 p20
 VAsif Abbas
 p21
-sassg20
-VHUNZA VALLEY
+sasVsummary
 p22
-sVshares
-p23
-(dp24
-Vcount
+(dp23
+Vtotal_count
+p24
+I46
+sVviewer_reaction
 p25
+VNONE
+p26
+sssg20
+VHUNZA VALLEY
+p27
+sVshares
+p28
+(dp29
+Vcount
+p30
 I5
 ssVlink
-p26
-Vhttps://www.facebook.com/humpakistan.info/photos/a.961669193930469.1073741858.297869513643777/1064113890352665/?type=3
-p27
-sVcreated_time
-p28
-V2016-10-14T18:01:51+0000
-p29
-sVmessage
-p30
-V#ShiskatLake\u000aHunzaValley | Gilgit-Baltistan | Pakistan | \u2606 Photo Credits: Ja Photography\u2606
 p31
+Vhttps://www.facebook.com/humpakistan.info/photos/a.961669193930469.1073741858.297869513643777/1064113890352665/?type=3
+p32
+sVcreated_time
+p33
+V2016-10-14T18:01:51+0000
+p34
+sVmessage
+p35
+V#ShiskatLake\u000aHunzaValley | Gilgit-Baltistan | Pakistan | \u2606 Photo Credits: Ja Photography\u2606
+p36
 sg16
 Vphoto
-p32
+p37
 sg18
 V297869513643777_1064113890352665
-p33
+p38
 s.

@@ -2,9 +2,9 @@ from django.http import HttpResponse
 from django.template import loader
 import os
 
-# from plots.fb_comments_scrapper import FbCommentScrapper
+from plots.fb_comments_scrapper import FbCommentScrapper
 
-# fb = FbCommentScrapper()
+fb = FbCommentScrapper()
 
 ALL_PLOTS = {'scatter':
 				{
@@ -53,14 +53,14 @@ def data(request):
 	return HttpResponse(html)
 
 def scatter(request):
-	# fb.plot_sentiment()
+	fb.plot_sentiment()
 	context = {
 		'all_plots': ALL_PLOTS['scatter'],
 	}
 	return HttpResponse(render_html(context))
 
 def wordcloud(request):
-	# fb.plot_wordcloud()
+	fb.plot_wordcloud()
 	context = {
 		'all_plots': ALL_PLOTS['wordcloud'],
 	}
@@ -72,14 +72,9 @@ def render_html(context):
 	if all_plots:
 		html += '<h1>' + all_plots['title'] + '</h1>'
 		html += '<p>' + all_plots['description'] + '<p>'
-		# html += '<img class="plotImage" alt="Image of Plot" src=' + IMG_ROOT + \
-		# 	all_plots['location'] + '"/>'
 
 		html += '<img class="plotImage" alt="Image of Plot" src="/static/images/' + \
 			all_plots['location'] + '"/>'
-
-		# html += '<img class="plotImage" alt="Image of Plot" src="/capstone/static/' + \
-		# 	all_plots['location'] + '"/>'
 
 	else:
 		html += "<h3>You don't have any plots</h3>"
