@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name = 'index'),
-    url(r'^scatter/', views.scatter, name = 'scatter'),
+    url(r'^sentiment/', views.sentiment, name = 'sentiment'),
     url(r'^wordcloud/', views.wordcloud, name = 'wordcloud'),
     url(r'^data/', views.data, name = 'data'),
 ]

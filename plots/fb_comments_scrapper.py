@@ -116,9 +116,11 @@ class FbCommentScrapper(object):
 			legend=True)
 		plt.xlabel('Comment Id')
 		plt.ylabel('Sentiment score')
+		mean_x = list(df.index)
+		mean_y = [mean_score]*len(mean_x)
+		plt.plot(mean_x, mean_y, label='Mean score')
 		plt.savefig(cls.IMG_ROOT + 'sentiment.png', bbox_inches='tight')
 		plt.close()
-		# plt.show()
 
 	@classmethod
 	def parse_comments(cls, location):

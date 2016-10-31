@@ -6,23 +6,24 @@ import os
 
 # fb = FbCommentScrapper()
 
-ALL_PLOTS = {'scatter':
+ALL_PLOTS = {'sentiment':
 				{
 				'location':'sentiment.png', \
-				'title': 'Scatter plot of sentiment analysis', \
+				'title': 'Line chart of sentiment analysis', \
 				'description': 'Plot of sentiment scores of K2 (i.e. Second highest peak of the world)'}, \
 			'wordcloud':
 				{
 				'location': 'wordcloud.png', \
-				'title': 'Wordcloud cloud of comments', \
-				'description': 'Wordcloud from frequency distribution of occurance of words in posts of K2 (i.e. Second highest peak of the world)'}
+				'title': 'Wordcloud of comments', \
+				'description': 'Wordcloud from frequency distribution of posts relating to K2 (i.e. Second highest peak of the world)'}
 			}
 
 PROJECT_ROOT=os.getcwd()
 IMG_ROOT = PROJECT_ROOT+'/plots/static/images/'
+BROWSER_TITLE = "<title>Tourists' companion</title>"
 
 def index(request):
-	html = ''
+	html = BROWSER_TITLE
 	for plot in ALL_PLOTS:
 		url = '/plots/' + plot + '/'
 		html += '<a href="' + url + '">' + ALL_PLOTS[plot]['title'] + '</a><br>'
@@ -52,10 +53,10 @@ def data(request):
 
 	return HttpResponse(html)
 
-def scatter(request):
+def sentiment(request):
 	# fb.plot_sentiment()
 	context = {
-		'all_plots': ALL_PLOTS['scatter'],
+		'all_plots': ALL_PLOTS['sentiment'],
 	}
 	return HttpResponse(render_html(context))
 
@@ -67,7 +68,7 @@ def wordcloud(request):
 	return HttpResponse(render_html(context))
 
 def render_html(context):
-	html = ''
+	html = BROWSER_TITLE
 	all_plots = context['all_plots']
 	if all_plots:
 		html += '<h1>' + all_plots['title'] + '</h1>'
