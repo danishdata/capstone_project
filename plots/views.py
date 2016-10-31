@@ -75,11 +75,11 @@ def render_html(context):
 		# html += '<img class="plotImage" alt="Image of Plot" src=' + IMG_ROOT + \
 		# 	all_plots['location'] + '"/>'
 
-		# html += '<img class="plotImage" alt="Image of Plot" src="/static/images/' + \
-		# 	all_plots['location'] + '"/>'
-
-		html += '<img class="plotImage" alt="Image of Plot" src="/capstone/static/' + \
+		html += '<img class="plotImage" alt="Image of Plot" src="/static/images/' + \
 			all_plots['location'] + '"/>'
+
+		# html += '<img class="plotImage" alt="Image of Plot" src="/capstone/static/' + \
+		# 	all_plots['location'] + '"/>'
 
 	else:
 		html += "<h3>You don't have any plots</h3>"
