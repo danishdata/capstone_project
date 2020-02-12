@@ -1,5 +1,5 @@
 BeautifulSoup==3.2.1
-Django==1.7.1
+Django==1.11.28
 EasyProcess==0.1.9
 Jinja2==2.8
 LinkChecker==9.3
