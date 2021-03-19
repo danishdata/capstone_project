@@ -1,7 +1,7 @@
 BeautifulSoup==3.2.1
 Django==1.7.1
 EasyProcess==0.1.9
-Jinja2==2.8
+Jinja2==2.11.3
 LinkChecker==9.3
 MarkupSafe==0.23
 MySQL-python==1.2.3
