@@ -103,7 +103,7 @@ pytz==2015.4
 redis==2.10.3
 requests==2.9.1
 requests-oauthlib==0.4.2
-rsa==3.4.2
+rsa==4.7
 s3transfer==0.1.1
 scipy==0.15.1
 seaborn==0.6.0
